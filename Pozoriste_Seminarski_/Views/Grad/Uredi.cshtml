@@ -1,0 +1,32 @@
+﻿@model Pozoriste.EntityModels.Grad
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+<h2 class="naslov">Uredi grad</h2>
+<br />
+<div class="okvir">
+    <form asp-action="UrediSnimi" method="post">
+
+        <input type="hidden" asp-for="GradID" />
+
+        <div class="form-group">
+            <label class="label">Naziv grada</label>
+            <input type="text" asp-for="Naziv" id="input" class="form-control" />
+            <span asp-validation-for="Naziv" class="text-danger"></span>
+
+        </div>
+
+        <input type="submit" value="Sačuvaj" class="btn btn-outline-danger" id="snimi" />
+    </form>
+
+    <br /><br />
+    <a asp-action="Prikazi" class="btn btn-outline-warning"><i class="fas fa-arrow-circle-left"></i>  Nazad</a>
+</div>
+
+
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+

@@ -1,0 +1,87 @@
+﻿@using Pozoriste_Seminarski_.Helper
+@using Pozoriste.EntityModels
+@model RezervacijaPrikaziVM
+
+@{
+    ViewData["Title"] = "MojeRezervacije";
+    Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+
+    string error_poruka2 = (string)TempData["error_poruka2"];
+
+}
+@{
+    KorisnickiNalog logiraniAdmin = Context.GetLogiraniKorisnik();
+}
+    <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    </head>
+
+<body style="background-color:whitesmoke">
+
+    <br />
+
+
+
+    <input type="hidden" asp-for="@Model.kupacId" />
+
+    <h2 style="text-align:center;letter-spacing:10px;font-size:30px;font-family:sans-serif; font-style:italic;font-weight:bold">MOJE REZERVACIJE</h2>
+
+    <br />
+    <br />
+
+
+
+    @if (error_poruka2 != null)
+    {
+        <br />
+        <div class="alert alert-danger">
+            @error_poruka2
+        </div>
+    }
+
+    <div class="content">
+
+        <table class="table table-dark dark">
+            <thead>
+                <tr>
+                    <th>Datum rezervacije </th>
+                    <th>Datum isteka</th>
+                    <th>Odobrena</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.lista)
+                {
+                    <tr>
+                        <td>@x.DatumRezervacije</td>
+                        <td>@x.DatumIsteka</td>
+                        @if (x.Odobrena)
+                        {
+                            <td style="color:forestgreen">DA</td>
+                            <td>
+                                <a class="btn btn-outline-success" style="width:50%" asp-action="KupiUlaznicu" asp-route-id="@x.Id"><i class="fas fa-shopping-cart"></i> Kupi ulaznicu</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="color:red">NE</td>
+                            <td>
+                                <a class="btn btn-outline-danger" style="width:50%" asp-action="OtkaziRezervaciju" asp-route-id="@x.Id"><i class="fas fa-window-close"></i> Otkaži rezervaciju</a>
+                            </td>
+                        }
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<script>$(window).on("load", function () {
+                $(".loader-wrapper").fadeOut(2000);
+            });</script>
+
+

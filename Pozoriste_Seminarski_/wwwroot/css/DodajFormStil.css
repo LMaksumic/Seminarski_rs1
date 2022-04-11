@@ -1,0 +1,23 @@
+﻿#save {
+    border-radius: 5px;
+    padding: 12px 18px;
+    color: darkslategrey;
+}
+
+    #save:hover {
+        background-color: darkgray;
+        color: white;
+        transition: 0.3s;
+    }
+
+body {
+    background-color: darkslategrey;
+    color: #fff;
+}
+
+form {
+    border: 1px solid gray;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 3px 4px grey;
+}

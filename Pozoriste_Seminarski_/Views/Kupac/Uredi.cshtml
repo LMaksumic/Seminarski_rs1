@@ -1,0 +1,58 @@
+﻿@model KupacUrediVM
+
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+<h2 class="naslov">Uredi kupca</h2>
+<br />
+<div class="okvir">
+    <form asp-action="UrediSnimi" method="post">
+        <input type="hidden" asp-for="KupacID" />
+
+        <div class="form-group">
+            <label class="label">Ime</label>
+            <input asp-for="Ime" id="input" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label class="label">Prezime</label>
+            <input asp-for="Prezime" id="input" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label class="label">Broj telefona</label>
+            <input asp-for="BrojTelefona" id="input" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label class="label">Email</label>
+            <input asp-for="Email" id="input" class="form-control" />
+
+        </div>
+
+        <div class="form-group">
+            <label class="label">Grad</label>
+            <select asp-for="gradid" asp-items="Model.Grad" id="input" class="form-control"></select>
+        </div>
+
+
+        <input type="submit" value="Sačuvaj" class="btn btn-outline-danger" id="snimi" />
+    </form>
+
+    <br /><br />
+    <a href="/Kupac/Prikazi" class="btn btn-outline-warning"><i class="fas fa-arrow-circle-left"></i>  Nazad</a>
+</div>
+
+
+
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+
+

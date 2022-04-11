@@ -1,0 +1,45 @@
+﻿@model SalaDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body style="background-color:whitesmoke">
+
+
+    <h2 class="naslov">Dodaj salu</h2>
+    <br />
+
+    <div class="okvir">
+        <form asp-action="Snimi" method="post">
+            <input type="hidden" asp-for="Sala.SalaID" />
+
+            <div class="form-group">
+                <label class="label">Naziv </label>
+                <input asp-for="Sala.Naziv" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Naziv je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Kapacitet </label>
+                <input asp-for="Sala.Kapacitet" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Kapacitet je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+                <span asp-validation-for="Sala.Kapacitet" class="text-danger" style="margin-left:10%"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Klimatizacija </label>
+                <input asp-for="Sala.Klimatizacija" id="input" class="form-control" />
+            </div>
+
+            <input type="submit" value="Snimi" class="btn btn-outline-danger" id="snimi" />
+        </form>
+    </div>
+</body>

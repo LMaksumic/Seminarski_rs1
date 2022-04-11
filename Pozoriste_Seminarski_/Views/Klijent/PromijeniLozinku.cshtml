@@ -1,0 +1,49 @@
+﻿
+@model LoginVM
+
+@{
+    ViewData["Title"] = "Uredi";
+    Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+}
+<br />
+<body style="background-color:whitesmoke">
+
+    <h2 class="naslov"> Promijeni login</h2>
+    <br />
+    <div class="okvir">
+        <form asp-action="PromijeniLozinkuSnimi" method="post">
+            @* <input type="hidden" asp-for="" />*@
+
+            <div class="form-group">
+                <label class="label">Username</label>
+                <input asp-for="Username" id="input" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Password</label>
+                <input asp-for="Password" id="input" class="form-control" required oninvalid="this.setCustomValidity('Obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+
+
+            <input type="submit" value="Sačuvaj" class="btn btn-outline-danger" id="snimi" />
+        </form>
+
+
+        <br /><br />
+        <a asp-action="ONama" class="btn btn-outline-info"><i class="fas fa-arrow-circle-left"></i>  Nazad</a>
+
+    </div>
+</body>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+
+</head>
+
+
+

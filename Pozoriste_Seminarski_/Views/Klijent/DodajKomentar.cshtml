@@ -1,0 +1,44 @@
+﻿@model KomentarDodaj
+@{
+    ViewData["Title"] = "DodajKomentar";
+    Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+
+}
+
+
+<body>
+
+    <br />
+    <br />
+
+
+    <div>
+        <span style="font-size:20px; font-style:italic;font-weight:bold;margin-left:4%">
+            Putovanje: "@Model.predstava"
+        </span>
+        <br /><br /><br />
+
+        <form asp-action="SnimiKomentar" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Komentar.KomentarID" />
+            <input type="hidden" asp-for="Komentar.PredstavaID" />
+            <input type="hidden" asp-for="Komentar.KupacID" />
+
+            <div class="form-group">
+                <label class="label">Komentar</label>
+                <input asp-for="Komentar.Sadrzaj" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Ovo je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+            <input type="submit" value="Snimi" class="btn btn-outline-danger" id="snimi" />
+            <br /><br />
+            <div>
+                <a class="btn btn-outline-info" asp-action="Predstava"> <i class="fas fa-arrow-circle-left"></i> Nazad</a>
+            </div>
+        </form>
+
+
+    </div>
+</body>
+
+

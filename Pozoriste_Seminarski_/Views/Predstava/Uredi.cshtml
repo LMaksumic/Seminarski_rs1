@@ -1,0 +1,56 @@
+﻿@model PredstavaUrediVM
+
+@{
+    ViewData["Title"] = "Uredi";
+}
+
+<body style="background-color:whitesmoke">
+
+    <h2 class="naslov">Uredi predstavu</h2>
+    <br />
+    <div class="okvir">
+
+        <form asp-action="UrediSnimi" method="post">
+            <input type="hidden" asp-for="PredstavaID" />
+
+            <div class="form-group">
+                <label class="label">Naziv</label>
+                <input class="form-control" asp-for="Naziv" id="input" />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Opis</label>
+                <textarea class="form-control" asp-for="Opis" id="input"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="label">Režiser</label>
+                <input class="form-control" asp-for="Reziser" id="input" />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Trajanje</label>
+                <input class="form-control" asp-for="Trajanje" id="input" />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Žanr</label>
+                <select class="form-control" asp-for="zanrId" asp-items="Model.Zanr" id="input"></select>
+            </div>
+
+
+            <input type="submit" value="Sačuvaj" class="btn btn-outline-danger" id="snimi" />
+        </form>
+
+        <br /><br />
+        <a href="/Predstava/Prikazi" class="btn btn-outline-warning"><i class="fas fa-arrow-circle-left"></i>  Nazad</a>
+    </div>
+</body>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+
+
+

@@ -1,0 +1,64 @@
+﻿@model UlaznicaPrikaziVM
+@{
+    ViewData["Title"] = "MojeUlaznice";
+    Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+    string error_poruka = (string)TempData["error_poruka"];
+}
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body style="background-color:whitesmoke">
+
+
+    <br />
+    <h2 style="text-align:center;letter-spacing:10px;font-size:30px;font-family:sans-serif; font-style:italic; font-weight:bold">MOJE ULAZNICE</h2>
+    <br />
+    <br />
+    <br />
+
+
+    @if (error_poruka != null)
+    {
+        <br />
+        <div class="alert alert-danger">
+            @error_poruka
+        </div>
+    }
+
+    <div class="content">
+        <table class="table table-dark dark">
+            <thead>
+                <tr>
+                    <th>Prikazivanje </th>
+                    <th>Cijena (KM) </th>
+                    <th>Sjedište </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.lista)
+                {
+                    <tr>
+                        <td>@x.prikazivanje</td>
+                        <td>@x.Cijena</td>
+                        <td>@x.sjediste</td>
+                        <td>
+                            <a class="btn btn-outline-warning" asp-action="UlaznicaDetalji" asp-route-id="@x.ulaznicaId"><i class="fas fa-file-pdf"></i>  PDF</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+<div class="loader-wrapper">
+    <span class="loader"><span class="loader-inner"></span></span>
+</div>
+<script>
+    $(window).on("load", function () {
+        $(".loader-wrapper").fadeOut(2000);
+    });</script>
+

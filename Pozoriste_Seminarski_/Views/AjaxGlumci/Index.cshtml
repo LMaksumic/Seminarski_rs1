@@ -1,0 +1,33 @@
+﻿@model AjaxGlumciPrikaziVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<br />
+<br />
+<table class="table" style="width:80%; margin-left:10%">
+    <thead>
+        <tr>
+            <th>Ime </th>
+            <th>Prezime </th>
+            <th>Datum rođenja </th>
+            <th>Broj ugovora </th>
+            <th>Email </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.lista)
+        {
+            <tr>
+                <td>@x.Ime</td>
+                <td>@x.Prezime</td>
+                <td>@x.DatumRodjenja</td>
+                <td>@x.BrojUgovora</td>
+                <td>@x.Email</td>
+            </tr>
+        }
+    </tbody>
+</table>

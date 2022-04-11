@@ -1,0 +1,29 @@
+﻿@model Pozoriste.EntityModels.Predstava
+@{
+    ViewData["Title"] = "Detalji";
+
+    //Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+
+}
+<br />
+
+
+
+<input asp-for="PredstavaID" type="hidden" />
+
+
+<h2 style="margin-left:10%; font-weight:bold; font-style:italic"> @Model.Naziv </h2>
+
+
+<div id="ajaxDiv">
+
+</div>
+
+<br />
+
+
+<script>
+    $.get("/AjaxGlumci/Index/@Model.PredstavaID",function(data){
+        $("#ajaxDiv").html(data);
+    })
+</script>

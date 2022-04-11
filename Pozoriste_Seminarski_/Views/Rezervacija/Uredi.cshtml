@@ -1,0 +1,46 @@
+﻿@model RezervacijaUrediVM
+@{
+    ViewData["Title"] = "UrediForm";
+}
+
+<h2 class="naslov">Uredi rezervaciju</h2>
+<br />
+<div class="okvir">
+    <form asp-action="UrediSnimi" method="post">
+        <input type="hidden" asp-for="RezervacijaID" />
+
+        <div class="form-group">
+            <label class="label">Datum isteka</label>
+            <input class="form-control" asp-for="datumIst" id="input" />
+        </div>
+
+        <div class="form-group">
+            <label class="label">Datum rezervacije</label>
+            <input class="form-control" asp-for="datumRez" id="input" />
+        </div>
+
+        <div class="form-group">
+            <label class="label">Kupac</label>
+            <select class="form-control" asp-for="kupacid" asp-items="Model.Kupac" id="input"></select>
+        </div>
+
+
+        <div class="form-group">
+            <label class="label">Prikazivanje</label>
+            <select class="form-control" asp-for="prikazivanjeId" asp-items="Model.Prikazivanje" id="input"></select>
+        </div>
+
+        <input type="submit" value="Sačuvaj" class="btn btn-outline-danger" id="snimi" />
+    </form>
+    <br /><br />
+    <a href="/Rezervacija/Prikazi" class="btn btn-outline-warning"><i class="fas fa-arrow-circle-left"></i>  Nazad</a>
+
+</div>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+
+</head>
+
+

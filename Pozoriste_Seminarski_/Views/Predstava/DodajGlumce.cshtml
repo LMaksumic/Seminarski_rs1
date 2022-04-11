@@ -1,0 +1,35 @@
+﻿@model PredstavaGlumacDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+<head>
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body style="background-color:whitesmoke">
+
+    <h2 class="naslov">Dodaj glumca</h2>
+    <br />
+
+    <div class="okvir">
+
+        <form asp-action="SnimiGlumca" method="post">
+            <input type="hidden" asp-for="GlumacPredstava.GlumacPredstavaID" />
+
+            <div class="form-group">
+                <label class="label">Predstava </label>
+                <select asp-for="GlumacPredstava.PredstavaID" asp-items="Model.Predstava" id="input" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="label">Glumac </label>
+                <select asp-for="GlumacPredstava.GlumacID" asp-items="Model.Glumac" id="input" class="form-control"></select>
+            </div>
+
+
+            <br />
+            <input type="submit" value="Snimi " class="btn btn-outline-danger" id="snimi" />
+        </form>
+    </div>
+</body>

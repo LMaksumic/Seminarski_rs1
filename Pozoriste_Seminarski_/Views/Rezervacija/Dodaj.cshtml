@@ -1,0 +1,53 @@
+﻿@model RezervacijaDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body style="background-color:whitesmoke">
+
+    <h2 class="naslov">Dodaj rezervaciju</h2>
+    <br />
+
+    <div class="okvir">
+
+        <form asp-action="Snimi" method="post">
+            <input type="hidden" asp-for="Rezervacija.RezervacijaID" />
+
+            <div class="form-group">
+                <label class="label">Kupac </label>
+
+                <select asp-for="Rezervacija.KupacID" asp-items="Model.Kupci" id="input" class="form-control"></select>
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Prikazivanje </label>
+                <select asp-for="Rezervacija.PrikazivanjeID" asp-items="Model.Prikazivanja" id="input" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="label">Datum rezervacije (trenutni datum i vrijeme) </label>
+                <input asp-for="Rezervacija.DatumRezervacije" value="@DateTime.Now" id="input" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Datum isteka (datum i vrijeme prikazivanja) </label>
+                <input asp-for="Rezervacija.DatumIsteka" id="input" class="form-control" readonly />
+            </div>
+
+            <div class="form-group">
+                <label class="label"> Odobrena </label>
+                <input asp-for="Rezervacija.Odobrena" id="input" class="form-control" />
+            </div>
+
+            <br />
+            <input type="submit" value="Snimi" class="btn btn-outline-danger" id="snimi" />
+        </form>
+
+    </div>
+</body>

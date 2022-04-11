@@ -1,0 +1,86 @@
+﻿@model NovostiPrikaziVM
+@{
+    ViewData["title"] = "Prikazi";
+
+}
+
+<h2 style="text-align: center; font-style:italic;">Novosti</h2>
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv </th>
+            <th>Tekst </th>
+            <th>Kratki sadržaj </th>
+            <th>Datum/Vrijeme objave</th>
+            <th>Slika</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.lista)
+        {
+            var photoPath = "~/images/" + (x.adresaaSlike ?? "no-image.png");
+
+            <tr>
+                <td style="width:7%">@x.Naziv</td>
+                <td style="width:35%">@x.Tekst</td>
+                <td style="width:14%">@x.KratkiSadrzaj</td>
+
+                <td style="width:18%">Datum/Vrijeme objave: @x.DatumVrijemeObjave</td>
+                <td style="width:8%">
+                    <img class="card-img-top imageThumbnail" src="@photoPath"
+                         asp-append-version="true" style="height:100px;width:100px;cursor:pointer;" onmouseout="smanji(this)" onmouseover="uvecaj(this)" />
+                </td>
+                <td style="width:18%">
+                    <span id="confirmDeleteSpan_@x.Id" style="display:none">
+                        <span>Da li ste sigurni da želite obrisati? </span>
+                        <a asp-action="Obrisi" asp-route-id="@x.Id" class="btn btn-outline-danger">DA</a>
+                        <a href="#" class="btn btn-outline-primary"
+                           onclick="confirmDelete('@x.Id', false)">NE</a>
+                    </span>
+
+                    <span id="deleteSpan_@x.Id">
+                        <a href="#" class="btn btn-outline-danger"
+                           onclick="confirmDelete('@x.Id', true)"><i class="far fa-trash-alt"></i> Obriši</a>
+                    </span>
+
+                    <a class="btn btn-outline-primary" asp-action="Uredi" asp-route-id="@x.Id"><i class="fas fa-edit"></i>  Uredi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="~/js/delete.js"></script>
+
+</head>
+
+<br />
+<br />
+<br />
+<a class="btn btn-outline-info" href="/Home/Index"><i class="fas fa-home"></i>  Početna</a>
+<a class="btn btn-outline-success" asp-action="Dodaj"><i class="fas fa-plus-circle"></i>  Dodaj novu</a>
+
+
+
+<script type="text/javascript">
+
+    function uvecaj(xyz) {
+        xyz.style.width = "320px";
+        xyz.style.height = "190px";
+        xyz.style.border = "3px solid #003bff"
+        xyz.style.borderRadius = "10px"
+        xyz.style.transition = "2s"
+    }
+    function smanji(xyz) {
+        xyz.style.width = "100px";
+        xyz.style.height = "100px";
+        xyz.style.border = "0px solid #003bff"
+        xyz.style.borderRadius = "0px"
+        xyz.style.transition = "0.5s"
+    }
+</script>

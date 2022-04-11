@@ -1,0 +1,51 @@
+﻿@model KupacDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body style="background-color:whitesmoke">
+
+
+    <h2 class="naslov">Dodaj kupca</h2>
+    <br />
+
+
+    <div class="okvir">
+
+        <form asp-action="Snimi" method="post">
+            <input type="hidden" asp-for="Kupac.KupacID" />
+
+            <div class="form-group">
+                <label class="label">Ime</label>
+                <input asp-for="Kupac.Ime" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Ime je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+            </div>
+            <div class="form-group">
+                <label class="label">Prezime</label>
+                <input asp-for="Kupac.Prezime" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Prezime je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+            </div>
+            <div class="form-group">
+                <label class="label">Grad</label>
+                <select asp-for="Kupac.GradID" asp-items="Model.grad" id="input" class="form-control"></select>
+
+            </div>
+            <div class="form-group">
+                <label class="label">Broj telefona</label>
+                <input asp-for="Kupac.BrojTelefona" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Broj telefona je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+            </div>
+            <div class="form-group">
+                <label class="label">Email</label>
+                <input asp-for="Kupac.Email" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Email je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+            </div>
+            <input type="submit" value="Snimi" class="btn btn-outline-danger" id="snimi" />
+        </form>
+    </div>
+</body>

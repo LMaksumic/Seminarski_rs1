@@ -1,0 +1,56 @@
+﻿
+@model PredstavaDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+}
+
+
+<body style="background-color:whitesmoke">
+
+    <h2 class="naslov">Dodaj predstavu</h2>
+    <br />
+
+    <div class="okvir">
+
+        <form asp-action="Snimi" method="post">
+            <input type="hidden" asp-for="Predstava.PredstavaID" />
+
+            <div class="form-group">
+                <label class="label">Naziv </label>
+                <input asp-for="Predstava.Naziv" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Naziv je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Opis </label>
+                <input asp-for="Predstava.Opis" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Opis je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Režiser </label>
+                <input asp-for="Predstava.Reziser" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Režiser je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Trajanje </label>
+                <input asp-for="Predstava.Trajanje" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Trajanje je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Žanr </label>
+                <select asp-for="Predstava.ZanrID" asp-items="Model.Zanr" id="input" class="form-control"></select>
+            </div>
+
+            <br />
+            <input type="submit" value="Snimi" class="btn btn-outline-danger" id="snimi" />
+        </form>
+    </div>
+</body>
+
+

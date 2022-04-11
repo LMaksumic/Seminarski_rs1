@@ -1,0 +1,114 @@
+﻿@model UlaznicaPrikaziVM
+
+@{
+    ViewData["Title"] = "UlaznicaDetalji";
+    Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+
+}
+<br />
+<br />
+<br />
+<head>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+
+    <script>
+        function generatePDF() {
+            var doc = new jsPDF('p', 'pt', 'a3');
+
+            var elementHTML = $('#content').html();
+
+            var specialElementHandlers = {
+                '#elementH': function (element, renderer) {
+                    return true;
+                }
+            };
+
+            doc.fromHTML(elementHTML, 133, 15, {
+                'width': 170,
+                'elementHandlers': specialElementHandlers
+            });
+            doc.save('ulaznica.pdf');
+        }
+    </script>
+</head>
+
+<body style="background-color:whitesmoke">
+
+
+    <div id="content">
+        <!-- HTML contnet goes here -->
+        @*<div  style="text-align:center;border:3px solid gray; border-radius:30px;margin:auto; width:60%; background-color:darkblue; color:white;">
+                <div >
+                    <img src="~/images/mask1.png" />
+                </div>
+                <div>
+                    @foreach (var x in Model.lista)
+                    {
+
+                        <span style="font-size:large; font-style:oblique">
+                            Kupac:  @x.ImePrezime
+                        </span>
+
+                        <br />
+                        <br />
+                        <span style="font-size:large; font-style:oblique">
+                            Prikazivanje:  @x.prikazivanje
+                        </span>
+                        <br />
+                        <br />
+                        <span style="font-size:large; font-style:oblique">
+                            Sjedište:  @x.sjediste
+                        </span>
+                        <br />
+                        <br />
+                        <span style="font-size:large; font-style:oblique">
+                            Cijena:  @x.Cijena KM
+                        </span>
+
+                    }
+                </div>
+            </div>*@
+
+
+        <table width="70%" style="text-align:center; border-radius:30px; margin:auto; background-color:midnightblue;color:white">
+            <thead>
+                <tr>
+                    <th style="padding:15px">Kupac </th>
+                    <th style="padding:15px">Prikazivanje </th>
+                    <th style="padding:15px">Sjedište </th>
+                    <th style="padding:15px">Cijena (KM) </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody style="padding:10px">
+                @foreach (var x in Model.lista)
+                {
+                    <tr>
+                        <td style="padding:15px">@x.ImePrezime</td>
+                        <td style="padding:15px"> @x.prikazivanje</td>
+                        <td style="padding:15px"> @x.sjediste</td>
+                        <td style="padding:15px"> @x.Cijena</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <br />
+    <br />
+
+    <div id="elementH"></div>
+    <br />
+    <p style="text-align:center">
+        <button onclick="generatePDF();" class="btn btn-warning btn-lg" style="background-color:black;color:white;"><i class="fas fa-file-pdf"></i>  Sačuvaj</button>
+        <a class="btn btn-danger btn-lg" asp-action="MojeUlaznice"><i class="fas fa-arrow-circle-left"></i> Nazad</a>
+    </p>
+
+</body>
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>

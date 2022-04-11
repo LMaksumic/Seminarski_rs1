@@ -1,0 +1,44 @@
+﻿@using Pozoriste_Seminarski_.Helper
+@using Pozoriste.EntityModels
+
+
+@{
+    ViewData["Title"] = "Početna";
+    Layout = "~/Views/Shared/_LayoutKlijent.cshtml";
+}
+@{
+    KorisnickiNalog logiraniAdmin = Context.GetLogiraniKorisnik();
+}
+
+
+<body>
+    <section>
+        <div>
+
+            <h1 style="text-align:center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top:90px; color:darkslateblue;">
+                DOBRODOŠLI
+            </h1>
+
+            <h1 style="color:black; text-align:center">@logiraniAdmin.Username !</h1>
+            <br />
+            <br />
+            <br />
+
+
+            <p style="color:#fff;border-bottom:2px solid darkslateblue; width:50%; margin:auto;"></p>
+
+
+
+
+
+        </div>
+
+    </section>
+
+</body>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="~/js/delete.js"></script>
+
+</head>

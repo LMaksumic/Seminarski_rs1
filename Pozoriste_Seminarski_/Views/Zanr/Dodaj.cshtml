@@ -1,0 +1,37 @@
+﻿@model ZanrDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+    string dodaj_poruka = (string)TempData["dodaj_poruka"];
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+
+<body style="background-color:whitesmoke">
+
+
+    <h2 class="naslov">Dodaj žanr</h2>
+    <br />
+
+    <div class="okvir">
+
+        <form asp-action="Snimi" method="post">
+            <input type="hidden" asp-for="Zanr.ZanrID" />
+
+            <div class="form-group">
+                <label class="label">Naziv žanra</label>
+                <input asp-for="Zanr.Naziv" id="input" class="form-control" required="" oninvalid="this.setCustomValidity('Naziv je obavezno polje')"
+                       oninput="setCustomValidity('')" />
+
+            </div>
+
+            <input type="submit" value="Snimi" class="btn btn-outline-danger" id="snimi" />
+
+
+        </form>
+    </div>
+</body>

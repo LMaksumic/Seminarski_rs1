@@ -1,0 +1,57 @@
+﻿@model PrikazivanjeDodajVM
+@{
+    ViewData["Title"] = "Dodaj";
+    string error_poruka = (string)TempData["error_poruka"];
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/DodajForm.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body style="background-color:whitesmoke">
+
+    <h2 class="naslov">Dodaj prikazivanje</h2>
+    <br />
+
+    <div class="okvir">
+
+        <form asp-action="Snimi" method="post">
+            <input type="hidden" asp-for="Prikazivanje.PrikazivanjeID" />
+
+            <div class="form-group">
+                <label class="label">Predstava </label>
+                <select asp-for="Prikazivanje.PredstavaID" asp-items="Model.Predstavae" id="input" class="form-control"></select>
+
+            </div>
+
+            <div class="form-group">
+                <label class="label">Sala </label>
+                <select asp-for="Prikazivanje.SalaID" asp-items="Model.Sale" id="input" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label class="label">Datum prikazivanja </label>
+                <input asp-for="Prikazivanje.DatumPrikazivanja" id="input" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label class="label">Cijena </label>
+                <input asp-for="Prikazivanje.Cijena" id="input" class="form-control" />
+            </div>
+
+            <br />
+            <input type="submit" value="Snimi" class="btn btn-danger" id="snimi" />
+
+            @if (error_poruka != null)
+            {
+                <br />
+                <div class="alert alert-danger">
+                    @error_poruka
+                </div>
+            }
+
+        </form>
+    </div>
+</body>
